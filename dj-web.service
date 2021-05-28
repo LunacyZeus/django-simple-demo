@@ -1,0 +1,14 @@
+[Unit]
+Description=Django Simple Server
+After=syslog.target
+
+[Service]
+KillSignal=SIGQUIT
+ExecStart=/root/.pyenv/versions/3.9.2/envs/webenv/bin/uwsgi --ini /www/app/django-simple-demo/uwsgi.ini
+Restart=always
+Type=notify
+NotifyAccess=all
+StandardError=syslog
+
+[Install]
+WantedBy=multi-user.target
